@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         database = Database.getDatabase(this)
 
         GlobalScope.launch {
-            database.contactDao().insertContact(Contact(0,"shubham","3245", Date()))
+            database.contactDao().insertContact(Contact(0,"shubham","3245", Date(),1))
         }
 
     }
