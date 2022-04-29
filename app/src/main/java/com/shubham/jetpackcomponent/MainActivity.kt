@@ -9,6 +9,7 @@ import com.shubham.jetpackcomponent.database.Contact
 import com.shubham.jetpackcomponent.database.Database
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     lateinit var database : Database
@@ -16,11 +17,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        database = Room.databaseBuilder(applicationContext,Database::class.java,"Database").build()
-
+        database = Database.getDatabase(this)
 
         GlobalScope.launch {
-            database.contactDao().insertContact(Contact("shubham","3245", 0))
+            database.contactDao().insertContact(Contact(0,"shubham","3245", Date()))
         }
 
     }
