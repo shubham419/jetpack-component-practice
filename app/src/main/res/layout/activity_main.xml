@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="mainViewModel"
-            type="com.shubham.jetpackcomponent.MainViewModel" />
+            name="post"
+            type="com.shubham.jetpackcomponent.Post" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,43 +14,41 @@
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-        <Button
-            android:id="@+id/button"
+
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="@{()-> mainViewModel.updateData()}"
-            android:text="update"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="150dp"
+            imageFromUrl="@{post.imageUrl}"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
-            app:layout_constraintVertical_bias="0.1" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@{mainViewModel.mutableLiveData}"
             android:textSize="26sp"
+            android:text="@{post.title}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/editTextTextPersonName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="@={mainViewModel.mutableLiveData}"
-            app:layout_constraintBottom_toTopOf="@+id/textView"
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="0dp"
+            android:layout_height="45dp"
+            android:textSize="26sp"
+            android:text="@{post.description}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.629" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

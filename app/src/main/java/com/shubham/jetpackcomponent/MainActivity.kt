@@ -3,7 +3,6 @@ package com.shubham.jetpackcomponent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProvider
 import com.shubham.jetpackcomponent.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -12,10 +11,9 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(
             this, R.layout.activity_main)
 
-        val viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        val post  = Post("beauty", "beauty lies in eyes of beholder","https://firebasestorage.googleapis.com/v0/b/smart-attendance-676ea.appspot.com/o/3659672%20(1).jpg?alt=media&token=04f38afc-5c96-40a2-bde7-5a8b17e63569")
 
-        binding.mainViewModel = viewModel
-        binding.lifecycleOwner = this
+        binding.post = post
 
     }
 }
