@@ -3,21 +3,18 @@ package com.shubham.jetpackcomponent.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.shubham.jetpackcomponent.Repository
-import com.shubham.jetpackcomponent.database.Quote
+import com.shubham.jetpackcomponent.model.QuoteList
+import com.shubham.jetpackcomponent.repository.QuoteRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MainViewModel(private val repository: Repository) : ViewModel() {
+class MainViewModel(private val quoteRepository: QuoteRepository) : ViewModel() {
 
-    fun insertQuote(quote : Quote) {
-        viewModelScope.launch(Dispatchers.IO) {
-            repository.insertQuote(quote)
+    init {
+        viewModelScope.launch (Dispatchers.IO){
+        quoteRepository.getQuote(1)
         }
     }
-
-    fun getQuote(): LiveData<List<Quote>>{
-        return repository.getQuote()
-    }
-
+    val quote : LiveData<QuoteList>
+    get() = quoteRepository.quote
 }
