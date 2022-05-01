@@ -22,8 +22,8 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main)
 
 
-        val quoteService  = RetrofitHelper.getRetrofitInstance().create(QuoteService::class.java)
-        val quoteRepository = QuoteRepository(quoteService)
+        val quoteRepository = (application as QuoteApplication).quoteRepository
+
         val viewModel = ViewModelProvider(this, MainViewModelFactory(quoteRepository)).get(MainViewModel::class.java)
 
 
